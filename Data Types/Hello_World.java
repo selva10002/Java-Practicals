@@ -22,7 +22,7 @@ public class Hello_World {
 	//double example
 	double number = 99.9;
 	System.out.println(number);
-    //float example
+        //float example
 	float number1 = 99.9f;
 	System.out.println(number1);
 	//char example
