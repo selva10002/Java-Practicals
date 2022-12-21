@@ -1,0 +1,8 @@
+Exception Handling...
+
+there are two type of Exception Handling error..
+
+1. check Eception           --     Working At Compile Time..
+2. Not Checking Exception   --     Working At Run Time..
+
+Most of Eception is Not checking Exception type...
