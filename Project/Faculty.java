@@ -8,8 +8,10 @@ public class Faculty
 	
 	Scanner sc=new Scanner(System.in);
 	
+	// login page method
 	public void logInDemo() throws ClassNotFoundException, SQLException, IOException
 	{
+		
 		InputStreamReader is=new InputStreamReader(System.in);
 		
 		BufferedReader br= new BufferedReader(is);
@@ -17,6 +19,9 @@ public class Faculty
 		int i=1;
 		while(i>0)
 		{
+			System.out.println();
+			
+			System.out.println("************LOGIN PAGE***********");
 		String uname="admin";
 		String pword="12345";
 		
@@ -26,19 +31,24 @@ public class Faculty
 		
 		if(uname.equals(un))
 		{
-			System.out.println("Enter PassWord");
-			String pd=br.readLine();
+			while(true)
+			{
+				System.out.println("Enter PassWord");
+				String pd=br.readLine();
 			
-			if(pword.equals(pd))
-			{
-				System.out.println("logIn sucessfully");
-				options();
-				
-			}
-			else
-			{
-				System.out.println("Invalide Password");
-				
+				if(pword.equals(pd))
+				{
+					System.out.println("logIn sucessfully");
+					options();
+					
+				}
+				else
+				{
+					System.out.println("Invalide Password");
+					System.out.println();
+					System.out.println("****Enter Again****");
+					System.out.println();
+				}
 			}
 			
 		}
@@ -46,24 +56,28 @@ public class Faculty
 		else
 		{
 			System.out.println("Invalide UserName");
+			System.out.println();
+			System.out.println("****Enter Again****");
+			System.out.println();
 		}
 	 }
 		
 }
 		
-	
+	//menu method
 	public void options() throws ClassNotFoundException, SQLException, IOException
 	{
 		int d=0;
 		while(d==0)
 		{
+			System.out.println();
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		
 		Connection con=DriverManager.getConnection("jdbc:mysql:///project", "root", "12345");
 		
 		System.out.println("*******************  MENUS   *******************");
 		System.out.println();
-		System.out.println(" 1. View Stafe Profile");
+		System.out.println(" 1. View Staff Profile");
 		System.out.println(" 2. Display Stafe List");
 		System.out.println(" 3. Edit");
 		System.out.println(" 4. Exit");
@@ -88,13 +102,13 @@ public class Faculty
 				{
 				System.out.println("********Stafe_Profile*********");
 				System.out.println();
-				 System.out.println("Stafe ID 		: "+rs.getInt("id"));
-				 System.out.println("FirstName 		: "+rs.getString("fname"));
-				 System.out.println("LastName 		: "+rs.getString("lname"));
+				 System.out.println("Stafe ID 	: "+rs.getInt("id"));
+				 System.out.println("FirstName 	: "+rs.getString("fname"));
+				 System.out.println("LastName 	: "+rs.getString("lname"));
 				 System.out.println("Date Of Birth 	: "+rs.getString("dob"));
 				 System.out.println("Gender 		: "+rs.getString("gender"));
-				 System.out.println("Education 		: "+rs.getString("edu"));
-				 System.out.println("Location 		: "+rs.getString("location"));
+				 System.out.println("Education 	: "+rs.getString("edu"));
+				 System.out.println("Location 	: "+rs.getString("location"));
 				}
 			
 			break;
@@ -108,13 +122,13 @@ public class Faculty
 			System.out.println();
 			while(rs1.next())
 			{
-				 System.out.println("Stafe ID 		: "+rs1.getInt("id"));
-				 System.out.println("FirstName 		: "+rs1.getString("fname"));
-				 System.out.println("LastName 		: "+rs1.getString("lname"));
+				 System.out.println("Stafe ID 	: "+rs1.getInt("id"));
+				 System.out.println("FirstName 	: "+rs1.getString("fname"));
+				 System.out.println("LastName 	: "+rs1.getString("lname"));
 				 System.out.println("Date Of Birth 	: "+rs1.getString("dob"));
 				 System.out.println("Gender 		: "+rs1.getString("gender"));
-				 System.out.println("Education 		: "+rs1.getString("edu"));
-				 System.out.println("Location 		: "+rs1.getString("location"));
+				 System.out.println("Education 	: "+rs1.getString("edu"));
+				 System.out.println("Location 	: "+rs1.getString("location"));
 				 System.out.println();
 			}
 			
@@ -127,6 +141,10 @@ public class Faculty
 				break;
 						
 		case 4:
+			System.out.println("----*****_-----*****------*******---__-******---");
+			System.out.println("____THANKS FOR VISITING OUR APPLICATION___");
+			System.out.println("----*****_-----*****------*******---__-******---");
+		
 			
 			logInDemo();
 			
@@ -139,14 +157,15 @@ public class Faculty
 		
 }
 	
-	
+	//edit method
 	public void editStudentData() throws ClassNotFoundException, SQLException, IOException
 	{
-		int d=0;
-		while(d==0)
+		
+		
+		while(true)
 		{
-			
-			System.out.println("********UPDATE_OPTION********");	
+			System.out.println();
+			System.out.println("******** EDIT_OPTION ********");	
 			System.out.println("1. Add ");
 			System.out.println("2. Update");
 			System.out.println("3. Delete");
@@ -177,6 +196,8 @@ public class Faculty
 		
 		
 	}
+	
+	//add information method
 	public void insertSudentData() throws ClassNotFoundException, SQLException
 	{
 		
@@ -225,13 +246,14 @@ public class Faculty
 		ResultSet rs=ps1.executeQuery();
 		while(rs.next())
 		{
-			 System.out.println("ID 			: "+rs.getInt("id"));
-			 System.out.println("FirstName 		: "+rs.getString("fname"));
-			 System.out.println("LastName 		: "+rs.getString("lname"));
+			System.out.println();
+			 System.out.println("ID 		: "+rs.getInt("id"));
+			 System.out.println("FirstName 	: "+rs.getString("fname"));
+			 System.out.println("LastName 	: "+rs.getString("lname"));
 			 System.out.println("Date Of Birth 	: "+rs.getString("dob"));
 			 System.out.println("Gender 		: "+rs.getString("gender"));
-			 System.out.println("Education 		: "+rs.getString("edu"));
-			 System.out.println("Location 		: "+rs.getString("location"));
+			 System.out.println("Education 	: "+rs.getString("edu"));
+			 System.out.println("Location 	: "+rs.getString("location"));
 			 
 			 System.out.println();
 			 System.out.println("DATA ADDED SUCCESSFULY..");
@@ -241,11 +263,13 @@ public class Faculty
 		
 	}
 	
+	//update method
 	public void updateStudentData() throws ClassNotFoundException, SQLException, IOException
 	{
 		
 		while(true)
 		{
+			System.out.println();
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con=DriverManager.getConnection("jdbc:mysql:///project","root","12345");
@@ -258,8 +282,9 @@ public class Faculty
 		System.out.println(" 5. Education");
 		System.out.println(" 6. Location");
 		System.out.println(" 7. Back");
+		System.out.println();
 		
-		System.out.println("ENTER YOUR CHOISE");
+		System.out.println("********ENTER YOUR CHOISE********");
 		int i=sc.nextInt();
 		switch(i)
 		{
@@ -281,8 +306,8 @@ public class Faculty
 			ps.setString(1, fname);
 			ps.setInt(2, id);
 			
-			int d=ps.executeUpdate();
-			System.out.println(d);
+			ps.executeUpdate();
+			
 			p.setInt(1, id);
 			
 			
@@ -291,13 +316,14 @@ public class Faculty
 			
 			while(rs.next())
 				{
-				System.out.println("ID				: "+rs.getInt("id"));
+				 System.out.println();
+				 System.out.println("ID		: "+rs.getInt("id"));
 				 System.out.println("FirstName  	: "+rs.getString("fname"));
-				 System.out.println("LastName 		: "+rs.getString("lname"));
+				 System.out.println("LastName 	: "+rs.getString("lname"));
 				 System.out.println("Date Of Birth 	: "+rs.getString("dob"));
 				 System.out.println("Gender 		: "+rs.getString("gender"));
-				 System.out.println("Education 		: "+rs.getString("edu"));
-				 System.out.println("Location 		: "+rs.getString("location"));
+				 System.out.println("Education 	: "+rs.getString("edu"));
+				 System.out.println("Location 	: "+rs.getString("location"));
 				 System.out.println();
 				 System.out.println("*************Successfully Updated**************");
 				}
@@ -325,13 +351,14 @@ public class Faculty
 			
 			while(rs1.next())
 				{
-				 System.out.println("ID 			: "+rs1.getInt("id"));
-				 System.out.println("FirstName		: "+rs1.getString("fname"));
-				 System.out.println("LastName 		: "+rs1.getString("lname"));
-				 System.out.println("Date Of Birth  : "+rs1.getString("dob"));
+				System.out.println();
+				 System.out.println("ID 		: "+rs1.getInt("id"));
+				 System.out.println("FirstName	: "+rs1.getString("fname"));
+				 System.out.println("LastName 	: "+rs1.getString("lname"));
+				 System.out.println("Date Of Birth   : "+rs1.getString("dob"));
 				 System.out.println("Gender 		: "+rs1.getString("gender"));
-				 System.out.println("Education 		: "+rs1.getString("edu"));
-				 System.out.println("Location		: "+rs1.getString("location"));
+				 System.out.println("Education 	: "+rs1.getString("edu"));
+				 System.out.println("Location	: "+rs1.getString("location"));
 				 System.out.println();
 				 System.out.println("*************Successfully Updated**************");
 				}
@@ -360,13 +387,14 @@ public class Faculty
 			
 			while(rs2.next())
 				{
-				 System.out.println("ID   			: "+rs2.getInt("id"));
-				 System.out.println("FirstName 		: "+rs2.getString("fname"));
-				 System.out.println("LastName		: "+rs2.getString("lname"));
+				System.out.println();
+				 System.out.println("ID   		: "+rs2.getInt("id"));
+				 System.out.println("FirstName 	: "+rs2.getString("fname"));
+				 System.out.println("LastName	: "+rs2.getString("lname"));
 				 System.out.println("Date Of Birth 	: "+rs2.getString("dob"));
 				 System.out.println("Gender 		: "+rs2.getString("gender"));
-				 System.out.println("Education		: "+rs2.getString("edu"));
-				 System.out.println("Location 		: "+rs2.getString("location"));
+				 System.out.println("Education	: "+rs2.getString("edu"));
+				 System.out.println("Location 	: "+rs2.getString("location"));
 				 System.out.println();
 				 System.out.println("*************Successfully Updated**************");
 				}
@@ -395,13 +423,14 @@ public class Faculty
 			
 			while(rs3.next())
 				{
-				 System.out.println("ID 			: "+rs3.getInt("id"));
-				 System.out.println("FirstName 		: "+rs3.getString("fname"));
-				 System.out.println("LastName 		: "+rs3.getString("lname"));
+				System.out.println();
+				 System.out.println("ID 		: "+rs3.getInt("id"));
+				 System.out.println("FirstName 	: "+rs3.getString("fname"));
+				 System.out.println("LastName 	: "+rs3.getString("lname"));
 				 System.out.println("Date Of Birth 	: "+rs3.getString("dob"));
 				 System.out.println("Gender 		: "+rs3.getString("gender"));
-				 System.out.println("Education 		: "+rs3.getString("edu"));
-				 System.out.println("Location 		: "+rs3.getString("location"));
+				 System.out.println("Education 	: "+rs3.getString("edu"));
+				 System.out.println("Location 	: "+rs3.getString("location"));
 				 System.out.println();
 				 System.out.println("*************Successfully Updated**************");
 				}
@@ -413,7 +442,7 @@ public class Faculty
 			String q4="select * from teacher where id=?";
 			PreparedStatement ps4=con.prepareStatement(query4);
 			PreparedStatement p4=con.prepareStatement(q4);
-			System.out.println("Enter new edu");
+			System.out.println("Enter new Education");
 			sc.nextLine();
 			String edu=sc.nextLine();
 			
@@ -429,13 +458,14 @@ public class Faculty
 			
 			while(rs4.next())
 				{
-				 System.out.println("ID 			: "+rs4.getInt("id"));
-				 System.out.println("FirstName		: "+rs4.getString("fname"));
-				 System.out.println("LastName 		: "+rs4.getString("lname"));
+				System.out.println();
+				 System.out.println("ID 		: "+rs4.getInt("id"));
+				 System.out.println("FirstName	: "+rs4.getString("fname"));
+				 System.out.println("LastName 	: "+rs4.getString("lname"));
 				 System.out.println("Date Of Birth 	: "+rs4.getString("dob"));
 				 System.out.println("Gender 		: "+rs4.getString("gender"));
-				 System.out.println("Education 		: "+rs4.getString("edu"));
-				 System.out.println("Location 		: "+rs4.getString("location"));
+				 System.out.println("Education 	: "+rs4.getString("edu"));
+				 System.out.println("Location 	: "+rs4.getString("location"));
 				 System.out.println();
 				 System.out.println("*************Successfully Updated**************");
 				}
@@ -465,13 +495,14 @@ public class Faculty
 			
 			while(rs6.next())
 				{
-				 System.out.println("ID 			: "+rs6.getInt("id"));
-				 System.out.println("FirstName 		: "+rs6.getString("fname"));
-				 System.out.println("LastName 		: "+rs6.getString("lname"));
+				
+				 System.out.println("ID 		: "+rs6.getInt("id"));
+				 System.out.println("FirstName 	: "+rs6.getString("fname"));
+				 System.out.println("LastName 	: "+rs6.getString("lname"));
 				 System.out.println("Date Of Birth 	: "+rs6.getString("dob"));
 				 System.out.println("Gender 		: "+rs6.getString("gender"));
-				 System.out.println("Education 		: "+rs6.getString("edu"));
-				 System.out.println("Location 		: "+rs6.getString("location"));
+				 System.out.println("Education 	: "+rs6.getString("edu"));
+				 System.out.println("Location 	: "+rs6.getString("location"));
 				 System.out.println();
 				 System.out.println("*************Successfully Updated**************");
 				}
@@ -493,12 +524,13 @@ public class Faculty
 	
 	public void deleteStudentData() throws ClassNotFoundException, SQLException
 	{
-		int i=0;
+		
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con=DriverManager.getConnection("jdbc:mysql:///project","root","12345");
-		
-		System.out.println("**************DELETE STAFE INFORMATION************");
+		    
+		    System.out.println();
+		    System.out.println("**************DELETE STAFE INFORMATION************");
 			String query="delete from teacher  where id=?";
 			String q1="select*from teacher where id=?";
 			PreparedStatement ps=con.prepareStatement(query);
@@ -513,16 +545,18 @@ public class Faculty
 			
 			while(rs.next())
 				{
-				 System.out.println("ID 			: "+rs.getInt("id"));
-				 System.out.println("FirstName 		: "+rs.getString("fname"));
-				 System.out.println("LastName 		: "+rs.getString("lname"));
+				 System.out.println();
+				 System.out.println("ID 		: "+rs.getInt("id"));
+				 System.out.println("FirstName 	: "+rs.getString("fname"));
+				 System.out.println("LastName 	: "+rs.getString("lname"));
 				 System.out.println("Date Of Birth 	: "+rs.getString("dob"));
 				 System.out.println("Gender 		: "+rs.getString("gender"));
-				 System.out.println("Education 		: "+rs.getString("edu"));
-				 System.out.println("Location 		: "+rs.getString("location"));
+				 System.out.println("Education 	: "+rs.getString("edu"));
+				 System.out.println("Location 	: "+rs.getString("location"));
 				}
 			ps.executeUpdate();
-			System.out.println("*************Before Stafe Information Deleted Successfully*************");
+			System.out.println();
+			System.out.println("****Before Stafe Information Deleted Successfully****");
 		
 			System.out.println();
 		
@@ -530,11 +564,12 @@ public class Faculty
 
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException
+	
 	{
+		
 		Faculty obj=new Faculty();
 		obj. logInDemo();
 		
-
 	}
 
 }
